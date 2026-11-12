@@ -1,0 +1,332 @@
+<style>
+  #brightside-embed {
+    --bs-ink: #1d2b24;
+    --bs-muted: #647269;
+    --bs-green: #2f6848;
+    --bs-lime: #d7ed9c;
+    --bs-paper: #fbfaf6;
+    --bs-line: #e7e9df;
+    box-sizing: border-box;
+    margin: 0;
+    background: var(--bs-paper);
+    color: var(--bs-ink);
+    font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  #brightside-embed *,
+  #brightside-embed *::before,
+  #brightside-embed *::after { box-sizing: inherit; }
+
+  #brightside-embed a { color: inherit; }
+
+  #brightside-embed .bs-wrap {
+    width: min(1120px, calc(100% - 48px));
+    margin-inline: auto;
+  }
+
+  #brightside-embed .bs-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 82px;
+  }
+
+  #brightside-embed .bs-brand {
+    color: var(--bs-green);
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -.05em;
+    text-decoration: none;
+  }
+
+  #brightside-embed .bs-nav { display: flex; gap: 30px; }
+
+  #brightside-embed .bs-nav a {
+    color: var(--bs-muted);
+    font-size: .94rem;
+    text-decoration: none;
+  }
+
+  #brightside-embed .bs-nav a:hover,
+  #brightside-embed .bs-nav a:focus-visible { color: var(--bs-green); }
+
+  #brightside-embed .bs-hero {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    align-items: center;
+    gap: 56px;
+    padding-block: 74px 96px;
+  }
+
+  #brightside-embed .bs-eyebrow {
+    margin: 0 0 14px;
+    color: var(--bs-green);
+    font-size: .78rem;
+    font-weight: 750;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+
+  #brightside-embed h1 {
+    max-width: 620px;
+    margin: 0;
+    font-size: clamp(3rem, 6vw, 5.4rem);
+    letter-spacing: -.075em;
+    line-height: .99;
+  }
+
+  #brightside-embed .bs-hero-copy {
+    max-width: 490px;
+    margin: 24px 0 30px;
+    color: var(--bs-muted);
+    font-size: 1.12rem;
+  }
+
+  #brightside-embed .bs-button {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 22px;
+    border-radius: 999px;
+    background: var(--bs-green);
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background .2s, transform .2s;
+  }
+
+  #brightside-embed .bs-button:hover {
+    background: #245438;
+    transform: translateY(-2px);
+  }
+
+  #brightside-embed a:focus-visible {
+    outline: 3px solid #9abf55;
+    outline-offset: 4px;
+  }
+
+  #brightside-embed .bs-art {
+    position: relative;
+    display: grid;
+    min-height: 390px;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 48% 52% 47% 53% / 52% 43% 57% 48%;
+    background: #eaf0d9;
+  }
+
+  #brightside-embed .bs-sun {
+    position: absolute;
+    top: 13%;
+    right: 14%;
+    width: 76px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #f0bf65;
+  }
+
+  #brightside-embed .bs-hill {
+    position: absolute;
+    right: -12%;
+    bottom: -27%;
+    left: -12%;
+    height: 65%;
+    border-radius: 50% 50% 0 0;
+    background: #a9c783;
+    transform: rotate(-8deg);
+  }
+
+  #brightside-embed .bs-hill-front {
+    bottom: -37%;
+    left: 24%;
+    background: #6f9c69;
+    transform: rotate(12deg);
+  }
+
+  #brightside-embed .bs-art-label {
+    z-index: 1;
+    margin-top: 40px;
+    color: #234c36;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -.08em;
+    transform: rotate(-7deg);
+  }
+
+  #brightside-embed .bs-content {
+    padding-block: 74px 88px;
+    border-top: 1px solid var(--bs-line);
+  }
+
+  #brightside-embed .bs-section-heading {
+    max-width: 620px;
+    margin-bottom: 38px;
+  }
+
+  #brightside-embed h2 {
+    margin: 0 0 12px;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -.06em;
+    line-height: 1.1;
+  }
+
+  #brightside-embed .bs-section-heading p,
+  #brightside-embed .bs-card p { color: var(--bs-muted); }
+
+  #brightside-embed .bs-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  #brightside-embed .bs-card {
+    padding: 26px;
+    border: 1px solid var(--bs-line);
+    border-radius: 18px;
+    background: #fff;
+  }
+
+  #brightside-embed .bs-icon {
+    display: grid;
+    width: 44px;
+    aspect-ratio: 1;
+    margin-bottom: 22px;
+    place-items: center;
+    border-radius: 14px;
+    background: var(--bs-lime);
+    color: var(--bs-green);
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+
+  #brightside-embed .bs-card h3 { margin: 0; font-size: 1.12rem; }
+  #brightside-embed .bs-card p { margin: 8px 0 0; }
+
+  #brightside-embed .bs-contact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 38px;
+    border-radius: 22px;
+    background: #eaf0d9;
+  }
+
+  #brightside-embed .bs-contact p {
+    max-width: 540px;
+    margin: 0;
+    color: var(--bs-muted);
+  }
+
+  #brightside-embed .bs-contact h2 { margin-bottom: 10px; }
+  #brightside-embed .bs-contact .bs-button { flex: 0 0 auto; }
+
+  #brightside-embed .bs-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-block: 30px;
+    color: var(--bs-muted);
+    font-size: .9rem;
+  }
+
+  @media (max-width: 760px) {
+    #brightside-embed .bs-wrap { width: min(100% - 36px, 560px); }
+    #brightside-embed .bs-header { min-height: 72px; }
+    #brightside-embed .bs-nav { gap: 16px; }
+    #brightside-embed .bs-nav a { font-size: .85rem; }
+    #brightside-embed .bs-hero {
+      grid-template-columns: 1fr;
+      gap: 38px;
+      padding-block: 55px 70px;
+    }
+    #brightside-embed .bs-art { min-height: 300px; }
+    #brightside-embed .bs-cards { grid-template-columns: 1fr; }
+    #brightside-embed .bs-contact {
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 28px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    #brightside-embed .bs-nav { gap: 10px; }
+    #brightside-embed .bs-nav a { font-size: .78rem; }
+    #brightside-embed .bs-brand { font-size: 1.1rem; }
+    #brightside-embed .bs-footer { flex-direction: column; gap: 4px; }
+  }
+</style>
+
+<div id="brightside-embed">
+  <header class="bs-wrap bs-header">
+    <a class="bs-brand" href="#brightside-embed" aria-label="Brightside home">brightside<span aria-hidden="true">.</span></a>
+    <nav class="bs-nav" aria-label="Main navigation">
+      <a href="#bs-about">About</a>
+      <a href="#bs-what-we-do">What we do</a>
+      <a href="#bs-contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="bs-hero bs-wrap" id="bs-about">
+      <div>
+        <p class="bs-eyebrow">A little more possibility</p>
+        <h1>Make room for good things.</h1>
+        <p class="bs-hero-copy">A simple place to share what you care about, what you’re building, and where you’re headed next.</p>
+        <a class="bs-button" href="#bs-what-we-do">Take a look</a>
+      </div>
+      <div class="bs-art" role="img" aria-label="Illustration of a sunny green landscape">
+        <div class="bs-sun"></div>
+        <div class="bs-hill"></div>
+        <div class="bs-hill bs-hill-front"></div>
+        <div class="bs-art-label">hello, world</div>
+      </div>
+    </section>
+
+    <section class="bs-content" id="bs-what-we-do">
+      <div class="bs-wrap">
+        <div class="bs-section-heading">
+          <p class="bs-eyebrow">The good stuff</p>
+          <h2>Small steps. Meaningful work.</h2>
+          <p>Use this space to introduce your work, your project, or the things that make your business yours.</p>
+        </div>
+        <div class="bs-cards">
+          <article class="bs-card">
+            <div class="bs-icon" aria-hidden="true">01</div>
+            <h3>Thoughtful by design</h3>
+            <p>Good ideas start with listening, curiosity, and a little bit of care.</p>
+          </article>
+          <article class="bs-card">
+            <div class="bs-icon" aria-hidden="true">02</div>
+            <h3>Made to make a difference</h3>
+            <p>Clear goals and considered choices help turn ideas into something useful.</p>
+          </article>
+          <article class="bs-card">
+            <div class="bs-icon" aria-hidden="true">03</div>
+            <h3>Better, together</h3>
+            <p>The best things happen when good people bring their perspectives together.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="bs-content" id="bs-contact">
+      <div class="bs-wrap">
+        <div class="bs-contact">
+          <div>
+            <p class="bs-eyebrow">Your next chapter</p>
+            <h2>Have something in mind?</h2>
+            <p>Tell visitors how to reach you and what you’d love to hear from them about.</p>
+          </div>
+          <a class="bs-button" href="mailto:hello@example.com">Say hello</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bs-wrap bs-footer">
+    <span>© 2026 Brightside</span>
+    <span>Made for good things.</span>
+  </footer>
+</div>
